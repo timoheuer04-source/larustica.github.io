@@ -1,0 +1,17 @@
+{
+  "name": "la-rustica-website",
+  "version": "1.0.0",
+  "description": "Moody & minimalist website for restaurant La Rustica",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y http-server -p 8080 -c-1"
+  },
+  "keywords": [
+    "la-rustica",
+    "restaurant",
+    "watercolor",
+    "minimalist"
+  ],
+  "author": "",
+  "license": "ISC"
+}

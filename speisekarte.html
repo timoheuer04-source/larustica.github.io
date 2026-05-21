@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Speisekarte von La Rustica – Entdecken Sie unsere Antipasti, Zuppe, Insalata, Pizza, Carne und Beilagen. Traditionelle italienische Küche in Bissendorf.">
+  <title>Speisekarte | La Rustica – Cucina Italiana</title>
+  
+  <!-- Google Fonts: Cormorant Garamond (Serif), Pinyon Script (Handwriting), Inter (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=3">
+  <style>
+    /* Page-specific overrides for standalone Speisekarte - completely disable all scroll snapping */
+    *, html, body, section, div, header, main {
+      scroll-snap-type: none !important;
+      scroll-snap-align: unset !important;
+      scroll-padding: 0 !important;
+      scroll-margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    html, body {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      height: auto !important;
+    }
+
+    /* Make speisekarte section full page, not viewport-constrained */
+    .speisekarte-page {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      background-color: var(--paper-color);
+      overflow-x: hidden !important;
+    }
+
+    .speisekarte-page .section-background {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Deco wrapper to clip overflow absolutely */
+    .speisekarte-deco-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Override the fixed height of the menu container for scrollable page */
+    .speisekarte-page .menu-container {
+      height: auto !important;
+      max-height: none !important;
+      max-width: 900px;
+    }
+
+    /* Standalone Speisekarte page scrolling */
+    .speisekarte-page .menu-scroll-area {
+      overflow: visible !important;
+      flex: none !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+
+    /* Back link styling */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+      margin-bottom: 1rem;
+    }
+
+    .back-link:hover {
+      color: var(--accent-gold);
+      transform: translateX(-3px);
+    }
+
+    .back-link .arrow {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* Override nav link active state for Speisekarte */
+    .nav-link[data-section="speisekarte"] {
+      color: var(--text-dark);
+    }
+    .nav-link[data-section="speisekarte"]::after {
+      width: 100%;
+    }
+
+    /* Category divider between sections */
+    .menu-category-divider {
+      width: 60%;
+      max-width: 200px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+      margin: 2.5rem auto 2rem;
+      opacity: 0.4;
+    }
+
+    @media (max-width: 768px) {
+      .speisekarte-page {
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span class="logo-script">la Rustica</span>
+        <span class="logo-sub">CUCINA ITALIANA</span>
+      </a>
+    </div>
+    
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="index.html#home" class="nav-link" data-section="home">Home</a></li>
+        <li><a href="index.html#adresse" class="nav-link" data-section="adresse">Wann & Wo</a></li>
+        <li><a href="speisekarte.html" class="nav-link active" data-section="speisekarte">Speisekarte</a></li>
+        <li><a href="index.html#biergarten" class="nav-link" data-section="biergarten">Biergarten</a></li>
+        <li><a href="index.html#kegelbahn" class="nav-link" data-section="kegelbahn">Kegelbahn</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-cta">
+      <button class="btn btn-primary open-reserve-btn">Tisch reservieren</button>
+    </div>
+  </header>
+
+  <!-- Speisekarte Page Content -->
+  <section class="speisekarte-page">
+    <div class="section-background solid-paper-bg"></div>
+
+    <div class="speisekarte-deco-wrapper">
+      <!-- Decorative SVG: Olive Branch (top-right) -->
+      <svg class="menu-deco menu-deco-olive" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 10 C95 50, 85 90, 90 130 C95 170, 80 210, 85 260" stroke="#c4b59a" stroke-width="1.5" fill="none" opacity="0.35"/>
+        <ellipse cx="78" cy="60" rx="14" ry="8" transform="rotate(-30 78 60)" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.3"/>
+        <ellipse cx="105" cy="95" rx="14" ry="8" transform="rotate(25 105 95)" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.3"/>
+        <ellipse cx="75" cy="135" rx="14" ry="8" transform="rotate(-20 75 135)" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.3"/>
+        <ellipse cx="100" cy="175" rx="14" ry="8" transform="rotate(30 100 175)" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.3"/>
+        <ellipse cx="80" cy="215" rx="14" ry="8" transform="rotate(-25 80 215)" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.3"/>
+        <circle cx="72" cy="80" r="6" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.25"/>
+        <circle cx="108" cy="115" r="6" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.25"/>
+        <circle cx="73" cy="155" r="6" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.25"/>
+        <circle cx="78" cy="235" r="6" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.25"/>
+      </svg>
+
+      <!-- Decorative SVG: Pizza Slice (bottom-left) -->
+      <svg class="menu-deco menu-deco-pizza" viewBox="0 0 180 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M90 20 L20 180 L160 180 Z" stroke="#c4b59a" stroke-width="1.5" fill="none" opacity="0.2"/>
+        <path d="M90 20 Q85 100, 20 180" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M90 20 Q95 100, 160 180" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.15"/>
+        <circle cx="70" cy="110" r="8" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.18"/>
+        <circle cx="110" cy="120" r="7" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.18"/>
+        <circle cx="85" cy="150" r="9" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.18"/>
+        <circle cx="100" cy="85" r="6" stroke="#c4b59a" stroke-width="1" fill="none" opacity="0.18"/>
+      </svg>
+    </div>
+
+    <div class="menu-container">
+      <!-- Back Link -->
+      <a href="index.html" class="back-link">
+        <span class="arrow">&larr;</span> Zurück zur Startseite
+      </a>
+
+      <!-- Header -->
+      <div class="menu-header">
+        <span class="menu-ornament">— La Rustica —</span>
+        <h1 class="menu-title">Speisekarte</h1>
+        <p class="menu-subtitle">Unsere kulinarischen Kreationen</p>
+      </div>
+
+      <!-- Category Tabs (still functional for jumping) -->
+      <nav class="menu-tabs" role="tablist">
+        <button class="menu-tab active" data-category="antipasti" role="tab">Antipasti</button>
+        <button class="menu-tab" data-category="zuppe" role="tab">Zuppe</button>
+        <button class="menu-tab" data-category="insalata" role="tab">Insalata</button>
+        <button class="menu-tab" data-category="pizza" role="tab">Pizza</button>
+        <button class="menu-tab" data-category="carne" role="tab">Carne</button>
+        <button class="menu-tab" data-category="beilagen" role="tab">Beilagen</button>
+      </nav>
+
+      <!-- Scrollable Menu Content -->
+      <div class="menu-scroll-area">
+
+        <!-- ANTIPASTI -->
+        <div class="menu-category active" id="cat-antipasti">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Antipasti</span>
+            <span class="menu-cat-subtitle">Vorspeisen</span>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">4</span>
+                <span class="menu-item-name">Caprese</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Mozzarella mit Tomaten</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">5</span>
+                <span class="menu-item-name">Antipasto della Casa</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">12,00 €</span>
+              </div>
+              <p class="menu-item-desc">Verschiedene gegrillte Gemüsearten</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">6</span>
+                <span class="menu-item-name">Vitello Tonnato</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">13,50 €</span>
+              </div>
+              <p class="menu-item-desc">Hauchdünn geschnittenes Kalbsfleisch mit Thunfischsauce und Kapern</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">7</span>
+                <span class="menu-item-name">Carpaccio di Manzo</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">12,50 €</span>
+              </div>
+              <p class="menu-item-desc">Marinierte Rindfleischscheiben mit Champignons, Rucola und Parmesan</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">8</span>
+                <span class="menu-item-name">Bruschetta Rustica</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">5,50 €</span>
+              </div>
+              <p class="menu-item-desc">Geröstete Weißbrotscheiben mit Tomatenwürfeln und Basilikum</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">9</span>
+                <span class="menu-item-name">Scampi al Forno</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">12,50 €</span>
+              </div>
+              <p class="menu-item-desc">Garnelen in Knoblauch-Weißweinsauce mit Käse überbacken</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">10</span>
+                <span class="menu-item-name">Funghi alla Contadina</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">11,00 €</span>
+              </div>
+              <p class="menu-item-desc">Champignons gefüllt mit Spinat und Knoblauch, mit Gorgonzolakäse überbacken</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZUPPE -->
+        <div class="menu-category" id="cat-zuppe">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Zuppe</span>
+            <span class="menu-cat-subtitle">Suppen</span>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">12</span>
+                <span class="menu-item-name">Stracciatella Romana</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">6,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tortellini in Bouillon mit Ei</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">13</span>
+                <span class="menu-item-name">Zuppa di Pomodoro</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">5,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensuppe</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">15</span>
+                <span class="menu-item-name">Zuppa di Cipolla</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">6,00 €</span>
+              </div>
+              <p class="menu-item-desc">Zwiebelsuppe</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSALATA -->
+        <div class="menu-category" id="cat-insalata">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Insalata</span>
+            <span class="menu-cat-subtitle">Salate</span>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">16</span>
+                <span class="menu-item-name">Insalata Mista</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">6,50 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit Gurken, Paprika, Tomaten und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">17</span>
+                <span class="menu-item-name">Insalata Pollo</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">10,50 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit Rucola, Hähnchenstreifen, Mozzarella, Tomaten und Pesto</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">18</span>
+                <span class="menu-item-name">Insalata Sardegna</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,00 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit Tomaten, Gurken, Thunfisch, Ei und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">19</span>
+                <span class="menu-item-name">Insalata Rustica</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,50 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit Thunfisch, Schinken, Ei, Käse, Gurken, Tomaten, Paprika und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">20</span>
+                <span class="menu-item-name">Insalata Pescatore</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">10,50 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit gebratenem Lachs, Ei, Gurken, Tomaten und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">21</span>
+                <span class="menu-item-name">Insalata Rucola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">12,00 €</span>
+              </div>
+              <p class="menu-item-desc">Eisbergsalat mit Rucola, Scampi, Mozzarella, Parmesanscheiben und Tomaten</p>
+            </div>
+          </div>
+          <div class="menu-note">
+            <span class="menu-note-title">Wählen Sie Ihr Dressing:</span> Essig-Öl · Joghurt · French
+          </div>
+        </div>
+
+        <!-- PIZZA -->
+        <div class="menu-category" id="cat-pizza">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Pizza</span>
+            <span class="menu-cat-subtitle">Ø 28 cm</span>
+          </div>
+          <div class="menu-items menu-items-grid">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">43</span>
+                <span class="menu-item-name">Margherita</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">6,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce und Käse</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">44</span>
+                <span class="menu-item-name">Salame</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse und Salami</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">45</span>
+                <span class="menu-item-name">Prosciutto</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse und Schinken</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">46</span>
+                <span class="menu-item-name">Funghi</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse und Champignons</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">47</span>
+                <span class="menu-item-name">Gondola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Salami, Champignons und Thunfisch</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">48</span>
+                <span class="menu-item-name">Hollandaise</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Spargel und Hollandaise</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">49</span>
+                <span class="menu-item-name">Speciale</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">11,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Spinat, Schweinefilet und Schafskäse</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">50</span>
+                <span class="menu-item-name">Napoli</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Kapern, Oliven und Sardellen</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">51</span>
+                <span class="menu-item-name">Gustosa</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken und Champignons</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">52</span>
+                <span class="menu-item-name">Artigianale</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken und Salami</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">53</span>
+                <span class="menu-item-name">Tonno e Cipolla</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Thunfisch und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">54</span>
+                <span class="menu-item-name">Contadino</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">10,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schafskäse, Hähnchenbrust und Hollandaise</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">55</span>
+                <span class="menu-item-name">Gladiatore</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Thunfisch und Champignons</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">56</span>
+                <span class="menu-item-name">A Modo Mio</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">11,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Lachs und Spinat</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">57</span>
+                <span class="menu-item-name">Quattro Formaggi</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce und vier Käsesorten</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">58</span>
+                <span class="menu-item-name">Filetto</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">12,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Rinderfilet, Cherry Tomaten und Parmesan</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">59</span>
+                <span class="menu-item-name">Calzone</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Salami und Champignons</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">60</span>
+                <span class="menu-item-name">Hawaii</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">7,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken und Ananas</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">61</span>
+                <span class="menu-item-name">Quattro Stagioni</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Champignons, Paprika und Artischocken</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">62</span>
+                <span class="menu-item-name">Diavolo</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, scharfe Salami und Mozzarella</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">63</span>
+                <span class="menu-item-name">Capricciosa</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Champignons, Artischocken, Oliven und Ei</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">64</span>
+                <span class="menu-item-name">Caprese</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Tomatenscheiben, Mozzarella und Basilikum</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">65</span>
+                <span class="menu-item-name">Giardino</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Champignons, Zwiebeln, Peperoni und Schafskäse</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">66</span>
+                <span class="menu-item-name">Scampi</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">11,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Scampi und Krabben</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">67</span>
+                <span class="menu-item-name">Frutti di Mare</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse und Meeresfrüchte</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">68</span>
+                <span class="menu-item-name">Amalfi</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Salami, Champignons und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">69</span>
+                <span class="menu-item-name">Romana</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Salami, Champignons, Zwiebeln und Thunfisch</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">70</span>
+                <span class="menu-item-name">Boscaiola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse und verschiedene Gemüsesorten</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">71</span>
+                <span class="menu-item-name">Rustica</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Zwiebeln und frische Tomaten</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">72</span>
+                <span class="menu-item-name">Galbanino</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">9,00 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Spinat und Gorgonzola</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">73</span>
+                <span class="menu-item-name">O Sole Mio</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">8,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Schinken, Spiegelei und Hollandaise</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">74</span>
+                <span class="menu-item-name">Rucola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">11,50 €</span>
+              </div>
+              <p class="menu-item-desc">Tomatensauce, Käse, Parmaschinken, Rucola und Parmesan</p>
+            </div>
+          </div>
+          <div class="menu-note">
+            Gerne können Sie Ihre Pizza ergänzen. Jeder Extrawunsch ab 1,00 €.<br>
+            Zu allen kleinen Pizzen berechnen wir 1,00 € weniger.
+          </div>
+        </div>
+
+        <!-- CARNE -->
+        <div class="menu-category" id="cat-carne">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Carne</span>
+            <span class="menu-cat-subtitle">Fleischgerichte</span>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">75</span>
+                <span class="menu-item-name">Filetto al Gorgonzola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">27,50 €</span>
+              </div>
+              <p class="menu-item-desc">Filetsteak mit Gorgonzolasauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">76</span>
+                <span class="menu-item-name">Filetto al Pepe Verde</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">27,50 €</span>
+              </div>
+              <p class="menu-item-desc">Filetsteak mit Pfefferrahmsauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">77</span>
+                <span class="menu-item-name">Filetto alla Griglia</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">25,50 €</span>
+              </div>
+              <p class="menu-item-desc">Gegrilltes Filetsteak mit Kräuterbutter</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">79</span>
+                <span class="menu-item-name">Medaglioni alla Nonna</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">21,50 €</span>
+              </div>
+              <p class="menu-item-desc">Schweinefiletmedaillons mit Schinken und Käse in Tomaten-Sahnesauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">81</span>
+                <span class="menu-item-name">Medaglioni con Funghi e Cipolle</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">21,50 €</span>
+              </div>
+              <p class="menu-item-desc">Schweinefiletmedaillons mit gebratenen Champignons und Zwiebeln</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">82</span>
+                <span class="menu-item-name">Medaglioni al Pepe Verde</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">21,50 €</span>
+              </div>
+              <p class="menu-item-desc">Schweinefiletmedaillons in Pfefferrahmsauce</p>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-header">
+                <span class="menu-item-nr">83</span>
+                <span class="menu-item-name">Medaglioni al Gorgonzola</span>
+                <span class="menu-item-dots"></span>
+                <span class="menu-item-price">21,50 €</span>
+              </div>
+              <p class="menu-item-desc">Schweinefiletmedaillons in Gorgonzolasauce</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BEILAGEN -->
+        <div class="menu-category" id="cat-beilagen">
+          <div class="menu-category-head">
+            <span class="menu-cat-title">Beilagen</span>
+            <span class="menu-cat-subtitle">Dazu bestellen</span>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item beilagen-item">
+              <p class="menu-item-desc" style="font-size: 1.05rem; text-align: center; max-width: 400px; margin: 2rem auto;">
+                Pommes oder Kroketten<br>mit einem kleinen Salat
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.menu-scroll-area -->
+    </div><!-- /.menu-container -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <div class="footer-logo">
+            <span class="logo-script">la Rustica</span>
+            <span class="logo-sub">CUCINA ITALIANA</span>
+          </div>
+          <p class="footer-tagline">Moody &amp; minimalistischer Genuss im traditionellen italienischen Ambiente in Bissendorf.</p>
+        </div>
+        
+        <div class="footer-col footer-col-nav">
+          <h4 class="footer-title">Navigation</h4>
+          <ul>
+            <li><a href="index.html#home" class="footer-link">Home</a></li>
+            <li><a href="index.html#adresse" class="footer-link">Adresse &amp; Anfahrt</a></li>
+            <li><a href="speisekarte.html" class="footer-link">Speisekarte</a></li>
+            <li><a href="index.html#biergarten" class="footer-link">Biergarten</a></li>
+            <li><a href="index.html#kegelbahn" class="footer-link">Kegelbahn</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col footer-col-contact">
+          <h4 class="footer-title">Kontakt</h4>
+          <p>Osnabrücker Str. 8<br>49143 Bissendorf</p>
+          <p class="footer-contact-details">
+            Tel: <a href="tel:+49234567890">+49 (0) 234 567890</a><br>
+            Mail: <a href="mailto:info@larustica-bissendorf.de">info@larustica-bissendorf.de</a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 la Rustica. Alle Rechte vorbehalten.</p>
+        <div class="footer-legal-links">
+          <a href="legal.html#impressum" class="footer-legal-link">Impressum</a>
+          <span class="separator">|</span>
+          <a href="legal.html#datenschutz" class="footer-legal-link">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reservation & Opening Hours Overlay (Modal) -->
+  <div id="reservation-overlay" class="overlay-container">
+    <div class="overlay-backdrop"></div>
+    <div class="paper-card reservation-card" style="border: none;">
+      <button class="close-overlay-btn" aria-label="Schließen">&times;</button>
+      
+      <div class="card-inner" style="text-align: center; max-width: 500px; margin: 0 auto;">
+        <span class="section-tag-script">Kontakt & Reservierung</span>
+        <h3 class="card-title">Tisch & Kegelbahn</h3>
+        
+        <!-- Info Grid: Phone Only -->
+        <div class="overlay-info-grid" style="display: flex; justify-content: center; text-align: center;">
+          
+          <div class="info-column phone-column" style="align-items: center;">
+            <h4 class="info-subtitle">Telefonischer Kontakt</h4>
+            <p class="phone-desc">
+              Rufen Sie uns an, um einen Tisch oder die Kegelbahn zu reservieren:
+            </p>
+            <a href="tel:+49234567890" class="restaurant-phone-link">
+              <span class="phone-icon">&#9742;</span>
+              <span class="phone-number">+49 (0) 234 567890</span>
+            </a>
+            
+            <p class="phone-subtext" style="margin-top: 0.8rem;">
+              Für die Kegelbahn und größere Personengruppen empfehlen wir eine frühzeitige Buchung per Telefon.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG Filters for Torn Paper Edges -->
+  <svg class="svg-filters-definition">
+    <defs>
+      <!-- Horizontal Paper Tear Filter -->
+      <filter id="paper-tear-horizontal" x="0%" y="-10%" width="100%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      
+      <!-- Vertical Paper Tear Filter (for left/right card borders) -->
+      <filter id="paper-tear-vertical" x="-10%" y="0%" width="120%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- RESERVATION & OPENING HOURS MODAL FLOW ---
+      const openReserveBtns = document.querySelectorAll('.open-reserve-btn');
+      const reserveOverlay = document.getElementById('reservation-overlay');
+      const closeReserveBtn = document.querySelector('.close-overlay-btn');
+      const backdrop = document.querySelector('.overlay-backdrop');
+
+      function openOverlay(e) {
+        if (e) e.preventDefault();
+        reserveOverlay.classList.add('open');
+      }
+
+      function closeOverlay() {
+        reserveOverlay.classList.remove('open');
+      }
+
+      openReserveBtns.forEach((btn) => {
+        btn.addEventListener('click', openOverlay);
+      });
+
+      closeReserveBtn.addEventListener('click', closeOverlay);
+      backdrop.addEventListener('click', closeOverlay);
+
+      // Keyboard accessibility (Escape key to close modal)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && reserveOverlay.classList.contains('open')) {
+          closeOverlay();
+        }
+      });
+
+      // --- SPEISEKARTE TAB SWITCHING ---
+      const menuTabs = document.querySelectorAll('.menu-tab');
+      const menuCategories = document.querySelectorAll('.menu-category');
+
+      menuTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const category = tab.getAttribute('data-category');
+
+          // Update active tab visual
+          menuTabs.forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          // Show selected category and hide the others
+          menuCategories.forEach((cat) => {
+            if (cat.id === `cat-${category}`) {
+              cat.classList.add('active');
+            } else {
+              cat.classList.remove('active');
+            }
+          });
+
+          // Scroll back to top of menu header smoothly
+          const menuHeader = document.querySelector('.menu-header');
+          if (menuHeader) {
+            const headerOffset = 100;
+            const elementPosition = menuHeader.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: elementPosition - headerOffset,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

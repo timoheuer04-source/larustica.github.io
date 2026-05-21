@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Rustica - Moody & minimalistischer Genuss im traditionellen italienischen Ambiente. Genießen Sie Speisen in unserem Restaurant, Biergarten und auf unserer Kegelbahn.">
+  <title>La Rustica | Cucina Italiana</title>
+  
+  <!-- Google Fonts: Cormorant Garamond (Serif), Pinyon Script (Handwriting), Inter (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo">
+      <span class="logo-script">la Rustica</span>
+      <span class="logo-sub">CUCINA ITALIANA</span>
+    </div>
+    
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#adresse" class="nav-link" data-section="adresse">Wann & Wo</a></li>
+        <li><a href="speisekarte.html" class="nav-link">Speisekarte</a></li>
+        <li><a href="#biergarten" class="nav-link" data-section="biergarten">Biergarten</a></li>
+        <li><a href="#kegelbahn" class="nav-link" data-section="kegelbahn">Kegelbahn</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-cta">
+      <button class="btn btn-primary open-reserve-btn">Tisch reservieren</button>
+    </div>
+  </header>
+
+  <!-- Main Scroller for SPA experience -->
+  <main class="page-container">
+    
+    <!-- Section 1: Home -->
+    <section id="home" class="hero-section">
+      <div class="section-background" style="background-image: var(--bg-landing);"></div>
+      
+      <!-- Floating bushes elements from the original drawing on the left -->
+      <img src="images/bushes_top.png" class="landing-bush bush-top" alt="" role="presentation">
+      
+      <!-- Floating content text on the left (direct over background wash, no card background) -->
+      <div class="content-card no-card-bg animate-fade-in">
+        <div class="card-inner">
+          <span class="section-tag-script">Benvenuti</span>
+          <h1 class="main-heading">Cucina Italiana.<br><span class="italic-serif">Echte Leidenschaft.</span></h1>
+          <p class="description-text">
+            Treten Sie ein und genießen Sie traditionelle italienische Küche in einem stimmungsvollen, minimalistischen Ambiente. La Rustica vereint rustikale Tradition mit zeitloser Eleganz.
+          </p>
+          <div class="card-actions">
+            <button class="btn btn-secondary open-reserve-btn">Tisch reservieren</button>
+            <a href="#adresse" class="explore-link">Anfahrt & Adresse &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="torn-divider-bottom"></div>
+    </section>
+
+    <!-- Section 2: Adresse & Öffnungszeiten -->
+    <section id="adresse" class="hero-section text-dark-section">
+      <div class="section-background solid-paper-bg"></div>
+      
+      <div class="adresse-grid">
+        <!-- Left Side Group: iPhone Mockup & Anfahrt Details -->
+        <div class="anfahrt-group">
+          <!-- Column 1: iPhone Mockup displaying Google Maps -->
+          <div class="iphone-mockup-wrapper">
+            <div class="iphone-device">
+              <!-- Physical Hardware Buttons -->
+              <div class="iphone-btn iphone-btn-power"></div>
+              <div class="iphone-btn iphone-btn-vol-up"></div>
+              <div class="iphone-btn iphone-btn-vol-down"></div>
+              
+              <div class="iphone-bezel">
+                <div class="iphone-island"></div>
+                <div class="iphone-screen">
+                  <iframe 
+                    src="https://maps.google.com/maps?q=Osnabrücker%20Str.%208%2C%2049143%20Bissendorf&t=&z=15&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <!-- Glass glare overlay -->
+                <div class="iphone-glare"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Anfahrt & Address Details -->
+          <div class="content-card no-card-bg">
+            <div class="card-inner">
+              <span class="section-tag-script">Anfahrt</span>
+              <h2 class="main-heading">Unser Standort<br><span class="italic-serif">in Bissendorf</span></h2>
+              <p class="description-text">
+                Besuchen Sie uns in Bissendorf. Wir freuen uns darauf, Sie in unserem gemütlichen Restaurant begrüßen zu dürfen.
+              </p>
+              
+              <div class="address-details" style="margin: 1.5rem 0; line-height: 1.6;">
+                <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1.5rem;">
+                  <strong>la Rustica</strong><br>
+                  Osnabrücker Str. 8<br>
+                  49143 Bissendorf
+                </p>
+                <a href="https://www.google.com/maps/search/?api=1&query=La+Rustica+Osnabrücker+Str.+8+49143+Bissendorf" target="_blank" rel="noopener" class="btn btn-secondary maps-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                  <span class="map-icon">&#128205;</span> Route in Google Maps öffnen
+                </a>
+              </div>
+
+              <div class="card-actions">
+                <a href="speisekarte.html" class="explore-link">Speisekarte ansehen &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Opening Hours with White Paper Background -->
+        <div class="paper-card opening-hours-card">
+          <div class="card-edge"></div>
+          <div class="card-inner">
+            <span class="section-tag-script">Öffnungszeiten</span>
+            <h3 class="main-heading" style="font-size: 2.2rem;">Wann wir für<br><span class="italic-serif">Sie da sind</span></h3>
+            
+            <div class="hours-list">
+              <div class="hours-row">
+                <span class="day">Dienstag – Freitag</span>
+                <span class="time">12:00 – 14:00<br>18:00 – 22:00 Uhr</span>
+              </div>
+              <div class="hours-row">
+                <span class="day">Samstag</span>
+                <span class="time">18:00 – 22:00 Uhr</span>
+              </div>
+              <div class="hours-row">
+                <span class="day">Sonntag</span>
+                <span class="time">18:00 – 22:00 Uhr</span>
+              </div>
+              <div class="hours-row closed">
+                <span class="day">Montag</span>
+                <span class="time">Geschlossen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="torn-divider-bottom"></div>
+    </section>
+
+
+    <!-- Section 4: Biergarten -->
+    <section id="biergarten" class="hero-section">
+      <div class="section-background" style="background-image: var(--bg-biergarten);"></div>
+      
+      <div class="content-card no-card-bg">
+        <div class="card-inner">
+          <span class="section-tag-script">Sommerabende</span>
+          <h2 class="main-heading">Unser<br><span class="italic-serif">Biergarten</span></h2>
+          <p class="description-text">
+            Genießen Sie kühle Getränke und hausgemachte italienische Spezialitäten unter freiem Himmel. Unser idyllischer Biergarten ist eine Oase der Ruhe und Geselligkeit für warme Tage und laue Nächte.
+          </p>
+          <div class="card-actions">
+            <button class="btn btn-secondary open-reserve-btn">Tisch reservieren</button>
+            <a href="#kegelbahn" class="explore-link">Kegelbahn ansehen &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="torn-divider-bottom"></div>
+    </section>
+
+    <!-- Section 4: Kegelbahn -->
+    <section id="kegelbahn" class="hero-section">
+      <div class="section-background" style="background-image: var(--bg-kegelbahn);"></div>
+      
+      <!-- Content card shifted to the right to fit the light wash side of the image -->
+      <div class="paper-card content-card card-right">
+        <div class="card-edge"></div>
+        <div class="card-inner">
+          <span class="section-tag-script">Geselligkeit</span>
+          <h2 class="main-heading">Traditionelle<br><span class="italic-serif">Kegelbahn</span></h2>
+          <p class="description-text">
+            Ob für gesellige Runden, Familienfeiern oder einen sportlichen Abend mit Freunden – unsere hauseigene Kegelbahn bietet den perfekten Rahmen für traditionelle Freude und gutes Beisammensein.
+          </p>
+          <div class="card-actions">
+            <button class="btn btn-secondary open-reserve-btn">Bahn reservieren</button>
+            <a href="#home" class="explore-link">&larr; Zurück zum Hauptbereich</a>
+          </div>
+        </div>
+      </div>
+      <div class="torn-divider-bottom"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-col footer-col-brand">
+            <div class="footer-logo">
+              <span class="logo-script">la Rustica</span>
+              <span class="logo-sub">CUCINA ITALIANA</span>
+            </div>
+            <p class="footer-tagline">Moody &amp; minimalistischer Genuss im traditionellen italienischen Ambiente in Bissendorf.</p>
+          </div>
+          
+          <div class="footer-col footer-col-nav">
+            <h4 class="footer-title">Navigation</h4>
+            <ul>
+              <li><a href="#home" class="footer-link">Home</a></li>
+              <li><a href="#adresse" class="footer-link">Adresse &amp; Anfahrt</a></li>
+              <li><a href="speisekarte.html" class="footer-link">Speisekarte</a></li>
+              <li><a href="#biergarten" class="footer-link">Biergarten</a></li>
+              <li><a href="#kegelbahn" class="footer-link">Kegelbahn</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col footer-col-contact">
+            <h4 class="footer-title">Kontakt</h4>
+            <p>Osnabrücker Str. 8<br>49143 Bissendorf</p>
+            <p class="footer-contact-details">
+              Tel: <a href="tel:+49234567890">+49 (0) 234 567890</a><br>
+              Mail: <a href="mailto:info@larustica-bissendorf.de">info@larustica-bissendorf.de</a>
+            </p>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p class="footer-copyright">&copy; 2026 la Rustica. Alle Rechte vorbehalten.</p>
+          <div class="footer-legal-links">
+            <a href="legal.html#impressum" class="footer-legal-link">Impressum</a>
+            <span class="separator">|</span>
+            <a href="legal.html#datenschutz" class="footer-legal-link">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Reservation & Opening Hours Overlay (Modal) -->
+  <div id="reservation-overlay" class="overlay-container">
+    <div class="overlay-backdrop"></div>
+    <div class="paper-card reservation-card" style="border: none;">
+      <button class="close-overlay-btn" aria-label="Schließen">&times;</button>
+      
+      <div class="card-inner" style="text-align: center; max-width: 500px; margin: 0 auto;">
+        <span class="section-tag-script">Kontakt & Reservierung</span>
+        <h3 class="card-title">Tisch & Kegelbahn</h3>
+        
+        <!-- Info Grid: Phone Only -->
+        <div class="overlay-info-grid" style="display: flex; justify-content: center; text-align: center;">
+          
+          <div class="info-column phone-column" style="align-items: center;">
+            <h4 class="info-subtitle">Telefonischer Kontakt</h4>
+            <p class="phone-desc">
+              Rufen Sie uns an, um einen Tisch oder die Kegelbahn zu reservieren:
+            </p>
+            <a href="tel:+49234567890" class="restaurant-phone-link">
+              <span class="phone-icon">&#9742;</span>
+              <span class="phone-number">+49 (0) 234 567890</span>
+            </a>
+            
+            <p class="phone-subtext" style="margin-top: 0.8rem;">
+              Für die Kegelbahn und größere Personengruppen empfehlen wir eine frühzeitige Buchung per Telefon.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- SVG Filters for Torn Paper Edges -->
+  <svg class="svg-filters-definition">
+    <defs>
+      <!-- Horizontal Paper Tear Filter -->
+      <filter id="paper-tear-horizontal" x="0%" y="-10%" width="100%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      
+      <!-- Vertical Paper Tear Filter (for left/right card borders) -->
+      <filter id="paper-tear-vertical" x="-10%" y="0%" width="120%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
